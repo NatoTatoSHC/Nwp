@@ -1,0 +1,15 @@
+function fn(ctx) {
+	switch(ctx.action.action) {
+		case 'add':
+			let sum = 0;
+			ctx.action.numbers.forEach(n => {
+				if (typeof varCheck(n) == "number") {
+					sum += varCheck(n);
+				} else {
+					console.error("not a number");
+				}
+			});
+			ctx.vars[ctx.action.var] = sum;
+			break;
+	}
+}
