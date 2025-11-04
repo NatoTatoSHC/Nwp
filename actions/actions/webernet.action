@@ -1,0 +1,18 @@
+const https = require("https");
+function fn(ctx) {
+    switch (ctx.action.action) {
+        case 'wget':
+            //code here
+            let content = "";
+            https.get(action.url, (res) => {
+                res.setEncoding('utf-8');
+                res.on('data', (d) => {
+                    content += d;
+                });
+                res.on('end', () => {
+                    fs.writeFileSync(path.join(dirname, action.file), content, "utf8");
+                });
+            }).on('error', (error) => { console.error(error); });
+            break;
+    }
+}
