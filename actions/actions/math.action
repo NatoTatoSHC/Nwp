@@ -1,7 +1,8 @@
 function fn(ctx) {
+	let sum = 0;
 	switch(ctx.action.action) {
 		case 'add':
-			let sum = 0;
+			sum = 0;
 			ctx.action.numbers.forEach(n => {
 				if (typeof varCheck(n) == "number") {
 					sum += varCheck(n);
@@ -10,6 +11,50 @@ function fn(ctx) {
 				}
 			});
 			ctx.vars[ctx.action.var] = sum;
+			break;
+		case 'sub':
+			if (typeof varCheck(action.num1) == "number" && typeof varCheck(action.num2) == "number") {
+				ctx.vars[ctx.action.var] = action.num1 - action.num2;
+			} else {
+				console.error("not a number");
+			}
+			break;
+		case 'mul':
+			sum = 1;
+                        ctx.action.numbers.forEach(n => {
+                                if (typeof varCheck(n) == "number") { 
+                                       sum *= varCheck(n);
+                                } else {
+                                        console.error("not a number");
+                                }
+                        });
+                        ctx.vars[ctx.action.var] = sum;
+                        break;
+		case 'div':
+			if (typeof varCheck(action.num1) == "number" && typeof varCheck(action.num2) == "number") {
+                                ctx.vars[ctx.action.var] = action.num-1 / action.num2;
+                        } else {
+                                console.error("not a number");
+                        }
+                        break;
+		case 'pwr':
+			let ans = 1;
+			for (let i = 0; i < action.power; i++) {
+				if (typeof varCheck(action.number) == "number") {
+                                        ans *= varCheck(action.number);
+                                } else {
+                                        console.error("not a number");
+				}
+			}
+			vars[action.var] = ans;
+			break;
+		case 'floor':
+			let res = 0;
+			if (typeof varCheck(action.float) == "number" && String(varCheck(action.float)).includes('.')) {
+				let st1 = String(varCheck(action.float)).split('.')[0];
+				res = Number(st1);
+				vars[action.var] = res;
+			}
 			break;
 	}
 }
